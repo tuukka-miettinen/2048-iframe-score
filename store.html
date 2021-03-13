@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Game</title>
+    <style>
+        #gameWrapper {
+            height: calc(100vh - 200px);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        Store page
+    </div>
+    <div id="gameWrapper">
+        <iframe id="gameIframe" src="file:///C:/Users/Tuukka/projects/2048-iframe-communication/index.html" style="height: 100%; width: 100%; border: 2px solid gray; border-radius: 5px">
+        </iframe>
+    </div>
+</body>
+
+<script>
+    function receiveMessage(event) {
+        console.log("Received event:");
+        console.log(event.data);
+        console.log(event.data.messageType);
+    };
+    window.addEventListener("message", receiveMessage, true);
+</script>
+
+</html>
