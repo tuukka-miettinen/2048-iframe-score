@@ -26,7 +26,7 @@
             <h1 class="title">2048</h1>
             <div class="scores-container">
                 <div class="score-container">0</div>
-                <div class="best-container">0</div>
+                <div class="best-container" id="best-score">0</div>
             </div>
         </div>
 
@@ -76,6 +76,8 @@
             </div>
         </div>
 
+        <a class="save-button" onclick="postScore()">Save score</a>
+
         <p class="game-explanation">
             <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
         </p>
@@ -93,12 +95,13 @@
     <script src="js/application.js"></script>
 
     <script>
-        function post_score() {
+        function postScore() {
+            var bestScore = document.getElementById("best-score").textContent;
             window.parent.postMessage({
-                score: "20"
+                messageType: "SCORE",
+                score: bestScore
             }, "*");
         }
-        post_score()
     </script>
 </body>
 
